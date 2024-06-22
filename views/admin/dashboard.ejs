@@ -1,0 +1,51 @@
+<%- include('../layouts/header') -%>
+<div class="text-center" id="dashboard">
+  <div class="container border py-5">
+    <h1 class="font-weight-bold">Dashboard</h1>
+    <div class="dashboard-actions mb-4">
+      <a href="/admin/home" class="btn btn-success rounded-pill">Go to Admin Home</a>
+      <a href="/admin/newuser" class="btn btn-success rounded-pill">Add New User</a>
+    </div>
+    <form action="/admin/dashboard" method="GET" class="mb-4">
+      <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="Search users..." value="<%= searchQuery %>">
+        <button type="submit" class="btn btn-success rounded-pill">Search</button>
+      </div>
+    </form>
+    <% if (searchQuery) { %>
+      <div class="mb-4">
+        <a href="/admin/dashboard" class="btn btn-success rounded-pill">Back to Dashboard</a>
+      </div>
+    <% } %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(users.length > 0) { %>
+          <% users.forEach(user => { %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.mobile %></td>
+              <td>
+                <a href="/admin/edituser?id=<%= user._id %>" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="/admin/deleteuser?id=<%= user._id %>" class="btn btn-sm btn-outline-danger">Delete</a>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="4">Users Not Found</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include('../layouts/footer') -%>

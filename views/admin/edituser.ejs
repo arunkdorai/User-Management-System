@@ -1,0 +1,37 @@
+<%- include('../layouts/header') -%>
+<div class="text-center" id="editUser">
+  <div class="container border py-5">
+    <h1 class="font-weight-bold">Edit User</h1>
+    <% if (user) { %>
+      <form action="/admin/edituser" method="POST" class="pt-3">
+        <input type="hidden" name="id" value="<%= user._id %>">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" class="form-control" value="<%= user.name %>">
+          <% if (errors && errors.name) { %>
+            <small class="text-danger"><%= errors.name %></small>
+          <% } %>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" class="form-control" value="<%= user.email %>">
+          <% if (errors && errors.email) { %>
+            <small class="text-danger"><%= errors.email %></small>
+          <% } %>
+        </div>
+        <div class="form-group">
+          <label for="mno">Mobile Number</label>
+          <input type="text" name="mno" class="form-control" value="<%= user.mobile %>">
+          <% if (errors && errors.mobile) { %>
+            <small class="text-danger"><%= errors.mobile %></small>
+          <% } %>
+        </div>
+        <button type="submit" class="btn btn-success rounded-pill mt-3">Submit</button>
+        <a href="/admin/dashboard" class="btn btn-success rounded-pill mt-3">Back to Dashboard</a>
+      </form>
+    <% } else { %>
+      <p>User data is not available</p>
+    <% } %>
+  </div>
+</div>
+<%- include('../layouts/footer') -%>

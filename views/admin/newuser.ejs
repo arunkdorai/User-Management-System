@@ -1,0 +1,35 @@
+<%- include('../layouts/header') -%>
+<div class="text-center" id="addUser">
+  <div class="container border py-5">
+    <h1 class="font-weight-bold">Add New User</h1>
+    <% if (typeof message !== 'undefined') { %>
+      <p style="color: green"><%= message %></p>
+    <% } %>
+    <form action="/admin/newuser" method="POST" class="pt-3">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" value="<%= (formData && formData.name) || '' %>">
+        <% if (errors && errors.name) { %>
+          <small class="text-danger"><%= errors.name %></small>
+        <% } %>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control" value="<%= (formData && formData.email) || '' %>">
+        <% if (errors && errors.email) { %>
+          <small class="text-danger"><%= errors.email %></small>
+        <% } %>
+      </div>
+      <div class="form-group">
+        <label for="mno">Mobile Number</label>
+        <input type="text" name="mno" class="form-control" value="<%= (formData && formData.mno) || '' %>">
+        <% if (errors && errors.mobile) { %>
+          <small class="text-danger"><%= errors.mobile %></small>
+        <% } %>
+      </div>
+      <button type="submit" class="btn btn-success rounded-pill mt-3">Submit</button>
+      <a href="/admin/dashboard" class="btn btn-success rounded-pill mt-3">Back to Dashboard</a>
+    </form>
+  </div>
+</div>
+<%- include('../layouts/footer') -%>

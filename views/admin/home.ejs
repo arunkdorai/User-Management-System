@@ -1,0 +1,9 @@
+<%- include('../layouts/header') -%>
+<div class="text-center mt-5" id="admin-home">
+  <div class="container w-30 border py-5">
+    <h1>Welcome to the Admin Homepage, <%= user.name %></h1>
+    <a href="/admin/dashboard" class="btn btn-success rounded-pill mt-3">Dashboard</a>
+    <a href="/admin/logout" class="btn btn-success rounded-pill mt-3">Logout</a>
+  </div>
+</div>
+<%- include('../layouts/footer') -%>

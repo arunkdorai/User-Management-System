@@ -1,0 +1,31 @@
+<%- include('../layouts/header') -%>
+<div class="text-center" id="login">
+  <div class="container w-20 border py-5">
+    <div class="title pb-5">
+      <h2 class="font-weight-bold">Login System</h2>
+      <span>Log in for the existing user</span>
+      <% if (errors && errors.message) { %>
+        <div class="alert alert-danger text-center">
+          <p><%= errors.message %></p>
+        </div>
+      <% } %>
+    </div>
+    <form action="/login" method="post" class="pt-3">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Email" name="email">
+        <% if (errors && errors.email) { %>
+          <small class="text-danger"><%= errors.email %></small>
+        <% } %>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="password" placeholder="Password">
+        <% if (errors && errors.password) { %>
+          <small class="text-danger"><%= errors.password %></small>
+        <% } %>
+      </div>
+      <button type="submit" class="btn btn-success rounded-pill mt-3">Submit</button>
+    </form>
+    <a href="/register" class="btn btn-success rounded-pill mt-3">Signup</a>
+  </div>
+</div>
+<%- include('../layouts/footer') -%>
